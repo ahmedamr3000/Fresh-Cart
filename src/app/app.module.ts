@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -60,8 +60,6 @@ import { WishListComponent } from './components/wish-list/wish-list.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    RecaptchaV3Module,
-
     CarouselModule,
     FormsModule,
     ToastrModule.forRoot(),
