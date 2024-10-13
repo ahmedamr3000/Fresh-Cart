@@ -1,0 +1,35 @@
+<section class="container my-5 py-5">
+  <div class="row align-items-center">
+    <div class="col-md-4">
+      <div>
+        <owl-carousel-o [options]="categorySliderOption">
+          <ng-container *ngFor="let item of imges">
+            <ng-template carouselSlide>
+              <img [src]="item" class="w-100" height="270" />
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div>
+        <h3 class="h5">{{ data.title }}</h3>
+        <p class="text-muted">{{ data.description }}</p>
+        <h4 class="h6">{{ data.category.name }}</h4>
+        <div class="d-flex align-items-center justify-content-between">
+          <span>{{ data.price }} EGP</span>
+          <div>
+            <i class="fas fa-star rating-color"></i>
+            <span class="text-muted">{{ data.ratingsAverage }}</span>
+          </div>
+        </div>
+        <button
+          class="btn-main w-75 mx-auto d-block mt-2"
+          (click)="addCart(id)"
+        >
+          Add To Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

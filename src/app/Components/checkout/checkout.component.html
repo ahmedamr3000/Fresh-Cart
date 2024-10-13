@@ -1,0 +1,16 @@
+<form [formGroup]="checkout" class="w-75 mx-auto" (ngSubmit)="sendcheckout()">
+  <div>
+    <label for="phone"> Phone</label>
+    <input type="tel" formControlName="phone" class="form-control" id="phone" />
+  </div>
+  <div>
+    <label for="city"> City</label>
+    <input type="text" formControlName="city" class="form-control" id="city" />
+  </div>
+  <div>
+    <label for="details"> Details</label>
+    <textarea formControlName="details" class="form-control"></textarea>
+  </div>
+
+  <button class="btn-main mt-3">submit</button>
+</form>

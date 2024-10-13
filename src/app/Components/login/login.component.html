@@ -1,0 +1,70 @@
+<h1>login</h1>
+
+<form [formGroup]="loginForm" (ngSubmit)="SubmitLogin()">
+  <div class="mb-2">
+    <label> Test Account : ahmedamro3000@gmail.com </label>
+
+    <mat-form-field class="w-100">
+      <mat-label>E-mail</mat-label>
+      <input
+        #inputEmail
+        matInput
+        formControlName="email"
+        placeholder="Email"
+        required
+      />
+    </mat-form-field>
+    <div
+      class="war col mt-3"
+      *ngIf="
+        loginForm.get('email')?.errors &&
+        (loginForm.get('email')?.touched || inputEmail.value.length > 0)
+      "
+    >
+      <p *ngIf="loginForm.get('email')?.getError('required')">
+        email is Required
+      </p>
+      <p *ngIf="loginForm.get('email')?.getError('email')">email in valid</p>
+    </div>
+  </div>
+  <div class="mb-2">
+    <div>
+      <label> Password : A102030 </label>
+
+      <mat-form-field class="w-100">
+        <mat-label> password</mat-label>
+        <input
+          type="password"
+          #inputPass
+          matInput
+          formControlName="password"
+          placeholder="Password"
+          required
+        />
+      </mat-form-field>
+      <div
+        class="war col mt-3"
+        *ngIf="
+          loginForm.get('password')?.errors &&
+          (loginForm.get('password')?.touched || inputPass.value.length > 0)
+        "
+      >
+        <p *ngIf="loginForm.get('password')?.getError('required')">
+          password is Required
+        </p>
+        <p *ngIf="loginForm.get('password')?.getError('pattern')">
+          password must start with <br />
+          upperCase then from 6 to 20
+        </p>
+      </div>
+    </div>
+  </div>
+  <button class="btn-main d-block ms-auto my-4">
+    <i *ngIf="isloading" class="fas fa-spinner fa-spin"></i>
+    login
+  </button>
+
+  <p class="alert alert-danger mt-3" *ngIf="message">
+    {{ message }}
+  </p>
+</form>

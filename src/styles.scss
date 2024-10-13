@@ -1,0 +1,143 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap");
+@import "ngx-toastr/toastr";
+$main-color: #0aad0a;
+$light-color: #f0f3f2;
+$shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+  rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+  rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+$font-family: "Encode Sans Expanded", sans-serif;
+$rating-color: #ffc908;
+
+body {
+  font-family: $font-family !important;
+}
+
+.text-main {
+  color: $main-color;
+}
+
+.nav-link {
+  transition: unset !important;
+}
+.active-link {
+  background-color: $main-color !important;
+  color: $light-color !important;
+  border-radius: 5px;
+}
+
+.rating-color {
+  color: $rating-color;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+a,
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.product {
+  border-radius: 5px;
+  transition: box-shadow 0.5s;
+  overflow: hidden;
+  position: relative;
+}
+
+.product:hover {
+  box-shadow: 0 0 25px #11bd1168 !important;
+  border: solid 1px #11bd1168;
+}
+.product:hover .heart {
+  right: 5px;
+}
+.product .btn-main {
+  transform: translateY(150%);
+  transition: transform 0.7s;
+}
+.product:hover .btn-main {
+  transform: translateY(0);
+}
+
+.font-sm {
+  font-size: 12px;
+}
+
+.bg-main {
+  background-color: $main-color !important;
+}
+.bg-main-light {
+  background-color: $light-color !important;
+}
+.btn-main {
+  background-color: $main-color;
+  padding: 7px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5s;
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #ccc;
+
+    &:hover {
+      background-color: #ccc;
+    }
+  }
+
+  &:hover {
+    background-color: #11bd11;
+  }
+}
+
+.heart {
+  font-size: 30px;
+  position: absolute;
+
+  z-index: 99;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.btn-cart {
+  padding: 3px 8px;
+  border: black 1px solid;
+  border-radius: 5px;
+  &:hover {
+    background-color: $main-color;
+    color: white;
+  }
+}
+
+.war {
+  color: red;
+}
+
+.font {
+  font-size: 30px;
+}
+
+.mar {
+  margin-left: 40px !important;
+}
+
+.ani {
+  position: absolute;
+  bottom: 100%;
+  left: 100%;
+  font-size: 30px;
+  transition: all 0.7s;
+}
+
+.product {
+  overflow: hidden;
+  &:hover {
+    .ani {
+      left: 88%;
+      top: 5%;
+    }
+  }
+}

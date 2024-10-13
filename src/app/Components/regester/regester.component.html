@@ -1,0 +1,189 @@
+<section>
+  <mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup" label="Fill out your name">
+      <form [formGroup]="firstFormGroup">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input
+            #inputName
+            matInput
+            placeholder="Last name, First name"
+            formControlName="name"
+            required
+          />
+        </mat-form-field>
+        <div
+          class="war col mt-3"
+          *ngIf="
+            firstFormGroup.get('name')?.errors &&
+            (firstFormGroup.get('name')?.touched || inputName.value.length > 0)
+          "
+        >
+          <p *ngIf="firstFormGroup.get('name')?.getError('required')">
+            Name is Required
+          </p>
+          <p *ngIf="firstFormGroup.get('name')?.getError('minlength')">
+            Name MinLength 3
+          </p>
+          <p *ngIf="firstFormGroup.get('name')?.getError('maxlength')">
+            Name MaxLength 20
+          </p>
+        </div>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Fill out your E-mail">
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field>
+          <mat-label>E-mail</mat-label>
+          <input
+            #inputEmail
+            matInput
+            formControlName="email"
+            placeholder="Ex.ahmed@gmail.com"
+            required
+          />
+        </mat-form-field>
+        <div
+          class="war col mt-3"
+          *ngIf="
+            secondFormGroup.get('email')?.errors &&
+            (secondFormGroup.get('email')?.touched ||
+              inputEmail.value.length > 0)
+          "
+        >
+          <p *ngIf="secondFormGroup.get('email')?.getError('required')">
+            email is Required
+          </p>
+          <p *ngIf="secondFormGroup.get('email')?.getError('email')">
+            email in valid
+          </p>
+        </div>
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" label="Fill out your Password">
+      <form [formGroup]="thirdFormGroup">
+        <div class="d-flex">
+          <div>
+            <mat-form-field>
+              <mat-label> password</mat-label>
+              <input
+                type="password"
+                #inputPass
+                matInput
+                formControlName="password"
+                placeholder="Ex. A102030"
+                required
+              />
+            </mat-form-field>
+            <div
+              class="war col mt-3"
+              *ngIf="
+                thirdFormGroup.get('password')?.errors &&
+                (thirdFormGroup.get('password')?.touched ||
+                  inputPass.value.length > 0)
+              "
+            >
+              <p *ngIf="thirdFormGroup.get('password')?.getError('required')">
+                password is Required
+              </p>
+              <p *ngIf="thirdFormGroup.get('password')?.getError('pattern')">
+                password must start with <br />
+                upperCase then from 6 to 20
+              </p>
+            </div>
+          </div>
+          <div class="mx-5">
+            <mat-form-field>
+              <mat-label>rePassword</mat-label>
+              <input
+                type="password"
+                #inputrepass
+                matInput
+                formControlName="rePassword"
+                placeholder="Ex. A102030"
+                required
+              />
+            </mat-form-field>
+            <div
+              class="war col mt-3"
+              *ngIf="
+                thirdFormGroup.get('rePassword')?.errors &&
+                (thirdFormGroup.get('rePassword')?.touched ||
+                  inputrepass.value.length > 0)
+              "
+            >
+              <p *ngIf="thirdFormGroup.get('rePassword')?.getError('required')">
+                password is Required
+              </p>
+              <p *ngIf="thirdFormGroup.get('rePassword')?.getError('pattern')">
+                password must start with <br />
+                upperCase then from 6 to 20
+              </p>
+              <p *ngIf="thirdFormGroup.get('rePassword')?.getError('match')">
+                password must match
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step
+      [stepControl]="fourthFormGroup"
+      label="Fill out your phone number"
+    >
+      <form [formGroup]="fourthFormGroup">
+        <mat-form-field>
+          <mat-label>phone</mat-label>
+          <input
+            #inputPhone
+            matInput
+            formControlName="phone"
+            placeholder="Ex. 01069873931"
+            required
+          />
+        </mat-form-field>
+        <div
+          class="war col mt-3"
+          *ngIf="
+            fourthFormGroup.get('phone')?.errors &&
+            (fourthFormGroup.get('phone')?.touched ||
+              inputPhone.value.length > 0)
+          "
+        >
+          <p *ngIf="fourthFormGroup.get('phone')?.getError('required')">
+            phone is Required
+          </p>
+          <p *ngIf="fourthFormGroup.get('phone')?.getError('pattern')">
+            accept only egypt phone number
+          </p>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="handel()">Regester</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</section>

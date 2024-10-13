@@ -1,0 +1,72 @@
+<section>
+  <div class="row g-4">
+    <div
+      class="col-md-3"
+      *ngFor="
+        let item of products
+          | slice : 0 : 12
+          | paginate
+            : {
+                id: '232323',
+                itemsPerPage: itemsPerPage,
+                currentPage: currentPage,
+                totalItems: totalItems
+              }
+          | search : searchTerm
+      "
+    >
+      <div class="product shadow p-2">
+        <div [routerLink]="['/details', item._id]" class="cursor-pointer">
+          <img
+            [src]="item.imageCover"
+            class="w-100 position-relative"
+            [alt]="item.title"
+          />
+          <h3 class="h6 text-main">{{ item.category.name }}</h3>
+          <h4 class="h6">
+            {{ item.title.split(" ").slice(0, 2).join(" ") }}
+          </h4>
+          <div class="d-flex align-items-center justify-content-between">
+            <span>{{ item.price }} EGP</span>
+            <div>
+              <i class="fas fa-star rating-color"></i>
+              <span class="text-muted">{{ item.ratingsAverage }}</span>
+            </div>
+          </div>
+        </div>
+        <i
+          *ngIf="!wish.includes(item._id)"
+          class="fa-regular fa-heart ani"
+          (click)="addwishlist(item._id)"
+        ></i>
+        <i
+          *ngIf="wish.includes(item._id)"
+          class="fa-solid fa-heart ani text-danger"
+          (click)="removewishlist(item._id)"
+        ></i>
+
+        <button class="btn-main w-100" (click)="addCart(item._id)">
+          Add To Cart
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center mt-4">
+    <pagination-controls
+      id="232323"
+      (pageChange)="pageChanged($event)"
+      (pageBoundsCorrection)="pageChanged($event)"
+      [maxSize]="9"
+      [directionLinks]="true"
+      [autoHide]="true"
+      [responsive]="true"
+      previousLabel="Previous"
+      nextLabel="Next"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      screenReaderCurrentLabel="You're on page"
+    >
+    </pagination-controls>
+  </div>
+</section>
